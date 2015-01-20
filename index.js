@@ -18,9 +18,9 @@ module.exports = {
 
 var client = create({port: 61623}, function () {
   console.log('Apparently we connected');
-  client.publish('/queue/a', new Date().toString());
+  client.publish('/queue/a', JSON.stringify({ prop: 'ZOMG An object' }));
 
   client.subscribe('/queue/a', function (msg) {
-    console.log('Received a msg', msg);
+    console.log('Received a msg', msg, '[prop:', JSON.parse(msg).prop, ']');
   });
 });
