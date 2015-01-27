@@ -19,4 +19,4 @@ function create(options, callback) {
 
 module.exports = {
   createClient: create
-}
+};
