@@ -1,4 +1,4 @@
-node-stomp-client (unfinished)
+stompy a node stomp client (unfinished)
 =================
 
 Having had issues with other libraries in the past, random connection drops over
@@ -18,7 +18,7 @@ the following frame types are unsupported at present:
 #Usage
 Require the library, and create a client:
 ```javascript
-var stomp = require('stomp-client'),
+var stomp = require('stompy'),
     client = stomp.createClient();
 ```
 
@@ -41,7 +41,7 @@ N.B: In tests it seems unreliable to have heartbeat timeouts lower than 5 second
 ###Publish
 To publish to a destination:
 ```javascript
-var stomp = require('stomp-client'),
+var stomp = require('stompy'),
     client = stomp.createClient();
 
 client.publish('/queue/foo', 'bar');
@@ -50,7 +50,7 @@ client.publish('/queue/foo', 'bar');
 ###Subscribing
 Subscribing to a destination is as simple as:
 ```javascript
-var stomp = require('stomp-client'),
+var stomp = require('stompy'),
     client = stomp.createClient();
 
 client.subscribe('/queue/foo', function (msg) {
@@ -63,7 +63,7 @@ incoming message from the broker, could be useful if using the event pattern in
 your project whilst not incurring the extra network bandwith.
 
 ```javascript
-var stomp = require('stomp-client'),
+var stomp = require('stompy'),
 client = stomp.createClient();
 
 var sub client.subscribe('/queue/foo', function (msg) {
@@ -78,7 +78,7 @@ client.subscribeToEvent(sub, function (msg) {
 ###Unsubscribing
 Unsubscribing from a destination is just as easy:
 ```javascript
-var stomp = require('stomp-client'),
+var stomp = require('stompy'),
 client = stomp.createClient();
 
 var sub = client.subscribe('/queue/foo', function (msg) {

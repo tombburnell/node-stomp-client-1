@@ -1,0 +1,27 @@
+{
+  "name": "stompy",
+  "version": "1.0.1",
+  "description": "Stomp Client written against ActiveMQ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:glasseyes42/node-stomp-client.git"
+  },
+  "keywords": [
+    "stomp",
+    "activemq",
+    "client"
+  ],
+  "author": "Chris Flook",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/glasseyes42/node-stomp-client/issues"
+  },
+  "homepage": "https://github.com/glasseyes42/node-stomp-client",
+  "dependencies": {
+    "lodash": "^3.0.0"
+  }
+}
