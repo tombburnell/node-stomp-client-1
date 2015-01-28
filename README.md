@@ -6,10 +6,8 @@ a period of runtime with no reconnect for example, it seems fit to try a ground
 up rewrite.
 
 Currently written for STOMP v1.1, the intent is to support all of this protocol,
-the following frame types are unsupported at present:
+the following frame commands are unsupported at present:
  * RECEIPT
- * ACK
- * NACK
  * BEGIN
  * COMMIT
  * ABORT
@@ -46,6 +44,14 @@ var stomp = require('stompy'),
 
 client.publish('/queue/foo', 'bar');
 ```
+Other headers for a message can be provided like so:
+```javascript
+var stomp = require('stompy'),
+client = stomp.createClient();
+
+client.publish('/queue/foo', {persistent: true}, 'bar');
+```
+
 
 ###Subscribing
 Subscribing to a destination is as simple as:
@@ -57,6 +63,24 @@ client.subscribe('/queue/foo', function (msg) {
   console.info('/queue/foo:', msg);
 });
 ```
+
+It is a good practice to acknowledge messages from the broker, to perform this:
+* Provide the option as true to the subscribe function
+* Use the frame object passed back to your message handler to ack the message
+
+```javascript
+var stomp = require('stompy'),
+client = stomp.createClient();
+
+client.subscribe('/queue/foo', { ack: true } function (msg, frame) {
+  console.info('/queue/foo:', msg);
+  frame.ack();
+  //frame.nack();
+});
+```
+Please note that ```nack```ing a message will likely not have the desired effect unless your messages
+are persistent.  
+
 
 There is also the facility to subscribe to the actual internal event upon an
 incoming message from the broker, could be useful if using the event pattern in
