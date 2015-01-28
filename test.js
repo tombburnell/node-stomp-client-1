@@ -3,6 +3,7 @@ var client = stomp.createClient({port: 61623, heartbeat: { client: 2000}}, funct
   console.info('Connected on STOMP.');
   setInterval(function() {
     client.publish('/queue/a', JSON.stringify({ prop: 'ZOMG An object', time: new Date() }));
+    client.publish('/queue/b', {persistent: true}, JSON.stringify({ prop: 'ZOMG An object', time: new Date() }));
   }, 5000);
 
 
@@ -17,6 +18,11 @@ var client = stomp.createClient({port: 61623, heartbeat: { client: 2000}}, funct
 
   var third = client.subscribeToEvent(first, function (msg) {
     console.log('Fires everytime the original does.');
+  });
+
+  var fourth = client.subscribe('/queue/b', { ack: true }, function (msg, frame) {
+    console.log('Recevied a message that I need to ack');
+    frame.nack();
   });
 
 
