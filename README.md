@@ -111,3 +111,37 @@ var sub = client.subscribe('/queue/foo', function (msg) {
   client.unsubscribe(sub);
 });
 ```
+
+##Events
+###error
+Occurs when an error occurs inside the client, for example the end of a pipe, connection refused, etc.
+```javascript
+var stomp = require('stompy'),
+client = stomp.createClient();
+
+client.on('error', function (err) {
+  //do something...
+});
+```
+
+###transportError
+Occurs when the broker sends an error frame.
+```javascript
+var stomp = require('stompy'),
+client = stomp.createClient();
+
+client.on('transportError', function (frame) {
+  //do something...
+});
+```
+
+###lateheartbeat
+Occurs when the broker is late on a heartbeat.
+```javascript
+var stomp = require('stompy'),
+client = stomp.createClient();
+
+client.on('lateheartbeat', function (frame) {
+  //do something...
+});
+```

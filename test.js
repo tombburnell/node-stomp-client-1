@@ -31,3 +31,7 @@ var client = stomp.createClient({port: 61623, heartbeat: { client: 2000}}, funct
     clearInterval(client.transport.clientHeartbeat);
   },8000);
 });
+
+client.on('error', function (err) {
+  console.info('Stomp Client Error', err);
+});
