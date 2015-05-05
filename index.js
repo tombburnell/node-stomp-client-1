@@ -12,7 +12,7 @@ var defaultConfig = {
 };
 
 function create(options, callback) {
-  var config = _.merge(defaultConfig, options);
+  var config = _.merge(_.cloneDeep(defaultConfig), options);
 
   return new StompClient(config, callback);
 }
