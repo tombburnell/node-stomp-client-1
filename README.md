@@ -27,6 +27,7 @@ look like:
 {
   host: 'localhost',
   port: 61613,
+  retryOnClosed:true,
   heartbeat: {
     client: 5000,
     broker: 5000,
@@ -145,3 +146,7 @@ client.on('lateheartbeat', function (frame) {
   //do something...
 });
 ```
+
+###closed
+Occurs when the broken closed the connection. By default, a new connection is created, but you can disable this, with the property 'retryOnClosed' and set it to false. It will only try one time.
+
