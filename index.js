@@ -4,6 +4,7 @@ var _ = require('lodash'),
 var defaultConfig = {
   host: 'localhost',
   port: 61613,
+  retryOnClosed:true,
   heartbeat: {
     client: 5000,
     broker: 5000,
