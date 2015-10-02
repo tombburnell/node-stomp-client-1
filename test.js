@@ -1,5 +1,5 @@
 var stomp = require('./index');
-var client = stomp.createClient({port: 61623, heartbeat: { client: 2000}}, function () {
+var client = stomp.createClient({port: 61613, heartbeat: { client: 2000}}, function () {
   console.info('Connected on STOMP.');
   setInterval(function() {
     client.publish('/queue/a', JSON.stringify({ prop: 'ZOMG An object', time: new Date() }));
