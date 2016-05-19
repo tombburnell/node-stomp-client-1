@@ -1,6 +1,6 @@
 {
   "name": "stompy",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Stomp Client written against ActiveMQ",
   "main": "index.js",
   "scripts": {
