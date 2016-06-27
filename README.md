@@ -11,7 +11,6 @@ the following frame commands are unsupported at present:
  * BEGIN
  * COMMIT
  * ABORT
- * DISCONNECT
 
 #Usage
 Require the library, and create a client:
