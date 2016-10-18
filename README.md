@@ -72,7 +72,7 @@ It is a good practice to acknowledge messages from the broker, to perform this:
 var stomp = require('stompy'),
 client = stomp.createClient();
 
-client.subscribe('/queue/foo', { ack: true } function (msg, frame) {
+client.subscribe('/queue/foo', { ack: true }, function (msg, frame) {
   console.info('/queue/foo:', msg);
   frame.ack();
   //frame.nack();
@@ -148,4 +148,3 @@ client.on('lateheartbeat', function (frame) {
 
 ###closed
 Occurs when the broken closed the connection. By default, a new connection is created, but you can disable this, with the property 'retryOnClosed' and set it to false. It will only try one time.
-
